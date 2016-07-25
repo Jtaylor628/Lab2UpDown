@@ -47,6 +47,8 @@ namespace Lab2UpLeftDownRight {
 	private: System::Windows::Forms::Button^  Down;
 	private: System::Windows::Forms::Button^  Left;
 	private: System::Windows::Forms::Button^  Right;
+	private: System::Windows::Forms::Button^  Load_image;
+	private: System::Windows::Forms::Label^  label1;
 	private: System::Windows::Forms::Button^  ShowHide;
 
 	
@@ -63,22 +65,24 @@ namespace Lab2UpLeftDownRight {
 			this->Left = (gcnew System::Windows::Forms::Button());
 			this->Right = (gcnew System::Windows::Forms::Button());
 			this->ShowHide = (gcnew System::Windows::Forms::Button());
+			this->Load_image = (gcnew System::Windows::Forms::Button());
+			this->label1 = (gcnew System::Windows::Forms::Label());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// pictureBox1
 			// 
-			this->pictureBox1->Location = System::Drawing::Point(12, 12);
+			this->pictureBox1->Location = System::Drawing::Point(323, 283);
 			this->pictureBox1->Name = L"pictureBox1";
-			this->pictureBox1->Size = System::Drawing::Size(805, 471);
+			this->pictureBox1->Size = System::Drawing::Size(192, 200);
 			this->pictureBox1->TabIndex = 0;
 			this->pictureBox1->TabStop = false;
 			// 
 			// Up
 			// 
-			this->Up->Location = System::Drawing::Point(679, 160);
+			this->Up->Location = System::Drawing::Point(679, 231);
 			this->Up->Name = L"Up";
-			this->Up->Size = System::Drawing::Size(75, 48);
+			this->Up->Size = System::Drawing::Size(56, 37);
 			this->Up->TabIndex = 2;
 			this->Up->Text = L"Up";
 			this->Up->UseVisualStyleBackColor = true;
@@ -86,9 +90,9 @@ namespace Lab2UpLeftDownRight {
 			// 
 			// Down
 			// 
-			this->Down->Location = System::Drawing::Point(679, 322);
+			this->Down->Location = System::Drawing::Point(679, 317);
 			this->Down->Name = L"Down";
-			this->Down->Size = System::Drawing::Size(75, 48);
+			this->Down->Size = System::Drawing::Size(56, 37);
 			this->Down->TabIndex = 3;
 			this->Down->Text = L"Down";
 			this->Down->UseVisualStyleBackColor = true;
@@ -96,9 +100,9 @@ namespace Lab2UpLeftDownRight {
 			// 
 			// Left
 			// 
-			this->Left->Location = System::Drawing::Point(679, 214);
+			this->Left->Location = System::Drawing::Point(640, 274);
 			this->Left->Name = L"Left";
-			this->Left->Size = System::Drawing::Size(75, 48);
+			this->Left->Size = System::Drawing::Size(56, 37);
 			this->Left->TabIndex = 4;
 			this->Left->Text = L"Left";
 			this->Left->UseVisualStyleBackColor = true;
@@ -106,9 +110,9 @@ namespace Lab2UpLeftDownRight {
 			// 
 			// Right
 			// 
-			this->Right->Location = System::Drawing::Point(679, 268);
+			this->Right->Location = System::Drawing::Point(720, 274);
 			this->Right->Name = L"Right";
-			this->Right->Size = System::Drawing::Size(75, 48);
+			this->Right->Size = System::Drawing::Size(56, 37);
 			this->Right->TabIndex = 5;
 			this->Right->Text = L"Right";
 			this->Right->UseVisualStyleBackColor = true;
@@ -116,7 +120,7 @@ namespace Lab2UpLeftDownRight {
 			// 
 			// ShowHide
 			// 
-			this->ShowHide->Location = System::Drawing::Point(679, 49);
+			this->ShowHide->Location = System::Drawing::Point(679, 103);
 			this->ShowHide->Name = L"ShowHide";
 			this->ShowHide->Size = System::Drawing::Size(75, 23);
 			this->ShowHide->TabIndex = 6;
@@ -124,11 +128,34 @@ namespace Lab2UpLeftDownRight {
 			this->ShowHide->UseVisualStyleBackColor = true;
 			this->ShowHide->Click += gcnew System::EventHandler(this, &MyForm::ShowHide_Click);
 			// 
+			// Load_image
+			// 
+			this->Load_image->Location = System::Drawing::Point(679, 20);
+			this->Load_image->Name = L"Load_image";
+			this->Load_image->Size = System::Drawing::Size(75, 57);
+			this->Load_image->TabIndex = 7;
+			this->Load_image->Text = L"Load Image";
+			this->Load_image->UseVisualStyleBackColor = true;
+			this->Load_image->Click += gcnew System::EventHandler(this, &MyForm::Load_image_Click);
+			// 
+			// label1
+			// 
+			this->label1->AutoSize = true;
+			this->label1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label1->Location = System::Drawing::Point(674, 189);
+			this->label1->Name = L"label1";
+			this->label1->Size = System::Drawing::Size(69, 25);
+			this->label1->TabIndex = 8;
+			this->label1->Text = L"Move";
+			// 
 			// MyForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(847, 495);
+			this->Controls->Add(this->label1);
+			this->Controls->Add(this->Load_image);
 			this->Controls->Add(this->ShowHide);
 			this->Controls->Add(this->Right);
 			this->Controls->Add(this->Left);
@@ -138,9 +165,9 @@ namespace Lab2UpLeftDownRight {
 			this->Name = L"MyForm";
 			this->Text = L"MyForm";
 			this->Load += gcnew System::EventHandler(this, &MyForm::MyForm_Load);
-			this->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &MyForm::MyForm_Paint);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->EndInit();
 			this->ResumeLayout(false);
+			this->PerformLayout();
 
 		}
 #pragma endregion
@@ -151,23 +178,23 @@ namespace Lab2UpLeftDownRight {
 	private: System::Void MyForm_Load(System::Object^  sender, System::EventArgs^  e) {
 		
 		g = pictureBox1->CreateGraphics();
-		Invalidate();
+		//Invalidate();
 	}
 	private: System::Void Up_Click(System::Object^  sender, System::EventArgs^  e) {
 	
 		pic_location->setx(256);
 		pic_location->sety(12);
+		pictureBox1->Location = Point(pic_location->getx(), pic_location->gety());
 		
-		g->DrawImage(bmp, pic_location->getx(), pic_location->gety(), bmp->Width, bmp->Height);
-		pictureBox1->Invalidate();
+		
 	}
 
 private: System::Void Down_Click(System::Object^  sender, System::EventArgs^  e) {
 
-	pic_location->setx(256);
+	pic_location->setx(323);
 	pic_location->sety(283);
+	pictureBox1->Location = Point(pic_location->getx(), pic_location->gety());
 	
-	g->DrawImage(bmp, pic_location->getx(), pic_location->gety(), bmp->Width, bmp->Height);
 	
 }
 private: System::Void Left_Click(System::Object^  sender, System::EventArgs^  e) {
@@ -175,7 +202,7 @@ private: System::Void Left_Click(System::Object^  sender, System::EventArgs^  e)
 	pic_location->setx(12);
 	pic_location->sety(149);
 	
-	g->DrawImage(bmp, pic_location->getx(), pic_location->gety(), bmp->Width, bmp->Height);
+	pictureBox1->Location = Point(pic_location->getx(), pic_location->gety());
 	
 }
 private: System::Void Right_Click(System::Object^  sender, System::EventArgs^  e) {
@@ -183,19 +210,18 @@ private: System::Void Right_Click(System::Object^  sender, System::EventArgs^  e
 	pic_location->setx(460);
 	pic_location->sety(149);
 	
-	g->DrawImage(bmp, pic_location->getx(), pic_location->gety(), bmp->Width, bmp->Height);
+	pictureBox1->Location = Point(pic_location->getx(), pic_location->gety());
 	
 }
 private: System::Void ShowHide_Click(System::Object^  sender, System::EventArgs^  e) {
 	pictureBox1->Visible = !pictureBox1->Visible;
 	
 }
-	private: System::Void MyForm_Paint(System::Object^  sender, System::Windows::Forms::PaintEventArgs^  e) {
+	
 
+private: System::Void Load_image_Click(System::Object^  sender, System::EventArgs^  e) {
 
-		g->DrawImage(bmp, pic_location->getx(), pic_location->gety(), bmp->Width, bmp->Height);
-		//Update();
-	}
-
+	g->DrawImage(bmp, 0, 0, bmp->Width, bmp->Height);
+}
 };
 }
